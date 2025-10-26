@@ -6,7 +6,7 @@ import os
 from datetime import datetime
 import requests
 
-st.write("DEBUG: Secrets loaded:", list(st.secrets.keys()))
+
 
 
 # --- Password Protection ---
