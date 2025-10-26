@@ -7,9 +7,19 @@ from datetime import datetime
 import requests
 
 # --- Password Protection ---
-password = st.text_input("Enter password:", type="password")
-if password != st.secrets.get("dashboard_password"):
+if "authenticated" not in st.session_state:
+    st.session_state["authenticated"] = False
+
+if not st.session_state["authenticated"]:
+    password = st.text_input("Enter password:", type="password")
+    if password == st.secrets["auth"]["password"]:
+        st.session_state["authenticated"] = True
+        st.experimental_rerun()
+    elif password:
+        st.warning("Incorrect password.")
     st.stop()
+
+
 
 # --- Page Config ---
 st.set_page_config(page_title="SP500 Prediction Dashboard", layout="wide")
