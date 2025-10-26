@@ -41,7 +41,8 @@ st.set_page_config(page_title="SP500 Prediction Dashboard", layout="wide")
 # --- Database Connection ---
 
 
-engine = sqlalchemy.create_engine(DATABASE_URL)
+engine = sa.create_engine(DATABASE_URL)
+
 
 # --- App Header ---
 st.title("📈 S&P 500 Option-Based Prediction Dashboard")
