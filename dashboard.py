@@ -6,18 +6,23 @@ import os
 from datetime import datetime
 import requests
 
-# --- Password Protection ---
-if "authenticated" not in st.session_state:
-    st.session_state["authenticated"] = False
+st.write("DEBUG: Secrets loaded:", list(st.secrets.keys()))
 
-if not st.session_state["authenticated"]:
+
+# --- Password Protection ---
+if "auth_ok" not in st.session_state:
+    st.session_state["auth_ok"] = False
+
+if not st.session_state["auth_ok"]:
     password = st.text_input("Enter password:", type="password")
     if password == st.secrets["auth"]["password"]:
-        st.session_state["authenticated"] = True
-        st.experimental_rerun()
+        st.session_state["auth_ok"] = True
+        st.rerun()
     elif password:
-        st.warning("Incorrect password.")
+        st.error("Incorrect password")
     st.stop()
+
+
 
 
 
