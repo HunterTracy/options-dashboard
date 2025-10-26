@@ -27,3 +27,4 @@ models/
 # Notebooks / data dumps (optional)
 *.ipynb_checkpoints/
 data/
+.git-credentials
