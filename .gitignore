@@ -1,0 +1,29 @@
+# Python cache
+__pycache__/
+*.pyc
+
+# Local environments / site-packages / tools
+.venv/
+.venv*/
+.venv-*/
+venv/
+env/
+.local/
+.pythonstartup.py
+
+# Secrets (never commit)
+.streamlit/secrets.toml
+
+# Logs & artifacts
+*.log
+sp500_logs/
+streamlit.log
+
+# Models & large files
+models/
+*.pkl
+*.joblib
+
+# Notebooks / data dumps (optional)
+*.ipynb_checkpoints/
+data/
