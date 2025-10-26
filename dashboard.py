@@ -1,11 +1,20 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
-import sqlalchemy
 import os
 from datetime import datetime
 import requests
+import sqlalchemy as sa
 
+
+DB_USER = st.secrets["database"]["DB_USER"]
+DB_PASSWORD = st.secrets["database"]["DB_PASSWORD"]
+DB_HOST = st.secrets["database"]["DB_HOST"]
+DB_PORT = st.secrets["database"]["DB_PORT"]
+DB_NAME = st.secrets["database"]["DB_NAME"]
+
+DATABASE_URL = f"postgresql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
+engine = sa.create_engine(DATABASE_URL)
 
 
 
@@ -30,8 +39,7 @@ if not st.session_state["auth_ok"]:
 st.set_page_config(page_title="SP500 Prediction Dashboard", layout="wide")
 
 # --- Database Connection ---
-DATABASE_URL = f"postgresql://{os.getenv('DB_USER')}:{os.getenv('DB_PASSWORD')}@" \
-               f"{os.getenv('DB_HOST')}:{os.getenv('DB_PORT', 5432)}/{os.getenv('DB_NAME')}?sslmode=prefer"
+
 
 engine = sqlalchemy.create_engine(DATABASE_URL)
 
