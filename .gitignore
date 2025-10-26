@@ -28,3 +28,6 @@ models/
 *.ipynb_checkpoints/
 data/
 .git-credentials
+
+# pip cache
+.cache/
