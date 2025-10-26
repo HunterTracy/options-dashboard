@@ -8,3 +8,5 @@ pandas_market_calendars
 scipy
 yfinance
 psycopg2-binary
+plotly
+plotly
